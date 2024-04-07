@@ -1,0 +1,354 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  /* border: 2px solid black; */
+}
+
+body {
+  overflow: scroll;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+header{
+  background-color: #646E64;
+}
+/* Designing for the navbar */
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.logo h1 {
+  padding-top: 1rem;
+  font-size: 2rem;
+  color: var(--background);
+  margin-left: 0.5rem;
+}
+
+
+/* designing for the hamburger-menu */
+:root {
+  --bar-width: 65px;
+  --bar-height: 10px;
+  --hamburger-gap: 6px;
+  --foreground: #333;
+  --background: white;
+  --hamburger-margins: 8px;
+  --animation-timing: 200ms ease-in-out;
+  /* uses the tignometry to find the hipotinious*/
+  --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
+  --hamburger-top-margin: 18px;
+  /* --logo-color: rgb(165 29 35); */
+  --logo-color: var(--foreground);
+}
+
+.hamburger-menu {
+  /* finding the width of the x */
+  --x-width: calc(var(--hamburger-height) * 1.4142135623730950488);
+  display: flex;
+  flex-direction: column;
+  gap: var(--hamburger-gap);
+  width: max-content;
+  position: absolute;
+  left: var(--hamburger-margins);
+  top: var(--hamburger-top-margin);
+  z-index: 2;
+  cursor: pointer;
+}
+
+.hamburger-menu::before,
+.hamburger-menu::after,
+.hamburger-menu input {
+  content: " ";
+  width: var(--bar-width);
+  height: var(--bar-height);
+  background-color: var(--foreground);
+  transform-origin: left center;
+  border-radius: 9999px;
+  transition: opacity var(--animation-timing), width var(--animation-timing),
+    rotate var(--animation-timing), translate var(--animation-timing),
+    color var(--animation-timing);
+}
+
+.hamburger-menu input {
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  pointer-events: none;
+}
+
+.hamburger-menu:has(input:checked)::before {
+  rotate: 45deg;
+  width: var(--x-width);
+  translate: 0 calc(var(--bar-height) / -2);
+}
+
+.hamburger-menu:has(input:checked)::after {
+  rotate: -45deg;
+  width: var(--x-width);
+  translate: 0 calc(var(--bar-height) / 2);
+}
+
+.hamburger-menu input:checked {
+  opacity: 0;
+  width: 0;
+}
+
+/* Designing the side bar */
+nav.sidebar {
+  display: none;
+  position: absolute;
+  /* make it at the center */
+  left: 50%;
+  top: 15%;
+  transform: translateX(-50%);
+  margin: 0 auto 0rem;
+  width: 95%;
+  min-width: 300px;
+  /* Here, the alpha value is 0.5 (50% opacity) */
+  background-color: rgba(255, 255, 255, 0.5);
+
+  /* background-color: var(--foreground); */
+  /*for making the background transparent */
+
+  /* background-color:var(--foreground); */
+  clear: right;
+  /* padding-top: calc(var(--hamburger-top-margin) + var(--hamburger-height) + 1rem); */
+  max-height: 0vh;
+  z-index: 0;
+  border-radius: 3rem 3rem 3rem 3rem;
+
+  text-align: center;
+  padding: 2rem;
+  /* box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); */
+  /* overflow: auto; */
+  /* Horizontal offset, Vertical offset, Blur radius, Shadow color */
+}
+
+.sidebar a {
+  margin: 1rem auto 1rem auto;
+  display: none;
+  min-width: 200px;
+  padding: 1rem;
+  border: 2px solid var(--background);
+  /* border: transparent; */
+  border-radius: 1rem;
+  /* pointer-events: none; */
+  text-decoration: none;
+  /* font-size: 1.4rem; */
+  font-size: clamp(16px, 5vw, 24px);
+  /* The clamp function is used to make the object it is applied responsive without the use of any mediaqueries  */
+  color: var(--background);
+  box-shadow: none;
+  z-index: 1;
+  /* transition: all 1s ease-in-out; */
+  box-shadow: 0px 0px 8px var(--background);
+}
+
+.hamburger-menu:has(input:checked) ~ nav div .desktop-only {
+  display: none;
+}
+
+/* nav div .desktop-only{
+    display: none;
+
+} */
+
+.hamburger-menu:has(input:checked) ~ .sidebar a {
+  display: block;
+  border: 2px solid var(--background);
+}
+
+.hamburger-menu:has(input:checked) ~ nav.sidebar {
+  display: block;
+  width: 95%;
+  max-height: 100vh;
+  padding: 0rem 0rem 3rem 0rem;
+  opacity: 0.96;
+  background-color: var(--foreground);
+  padding: 2rem;
+  z-index: 100;
+  /* color: var(--foreground); */
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  /* Horizontal offset, Vertical offset, Blur radius, Shadow color */
+}
+
+.hamburger-menu:has(input:checked) ~ .sidebar a {
+  color: var(--background);
+  width: inherit;
+}
+
+/* designing for the main container */
+.content{
+  text-align: center;
+}
+.image-container img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  max-width: 100%;
+}
+.image-container{
+  overflow: hidden;
+  border-radius: 6rem;
+  width: 100%;
+}
+.imager-container-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #646E64;
+  border: 2px sold red;
+}
+
+/* Tablet */
+@media only screen and (min-width: 768px) {
+  .hamburger-menu,
+  .hamburger-menu::after,
+  .hamburger-menu::before {
+    display: none;
+    pointer-events: none;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+    /* border: 2px solid var(--foreground); */
+  }
+
+  .logo img {
+    max-width: 6rem;
+  }
+
+  .hamburger-menu:has(input:checked) ~ nav.sidebar {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    background-color: var(--background);
+    box-shadow: none;
+    /* background-color: white; */
+    max-height: 0px;
+    align-items: center;
+    padding: 0;
+    max-width: 100%;
+    margin: 0rem auto;
+    background-color: var(--foreground);
+    border-radius: 0;
+  }
+
+  nav.sidebar {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 0;
+    max-width: 100%;
+    margin: 0rem auto;
+    background-color: var(--foreground);
+    border-radius: 0;
+    /* background-color: yellowgreen; */
+    /* margin-top: 20rem; */
+    /* border: 2px solid red; */
+  }
+
+  nav.sidebar {
+    position: static;
+    left: auto;
+    top: auto;
+    transform: none;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-section {
+    margin-top: 1rem;
+  }
+  .sidebar a {
+    display: inline-block;
+    margin: 0 10px;
+    /* font-size: .65rem; @i need a clamp function to have the value from 0.8rem -0.7rem */
+    font-size: clamp(0.8rem, 1vh, 1.5rem);
+    /* font-size: 2rem; */
+    min-width: auto;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: var(--background);
+    border: 2px solid var(--foreground);
+    background-color: var(--foreground);
+    box-shadow: 0px 0px 0px var(--foreground);
+  }
+
+  .hamburger-menu:has(input:checked) ~ nav.sidebar a {
+    border: none;
+  }
+}
+
+/* Desktop */
+@media only screen and (min-width: 1024px) {
+  /* Add your desktop-specific CSS here */
+  header {
+    flex-direction: row-reverse;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 0px;
+    padding: 0 1.5rem;
+    margin-top: 0px;
+  }
+  .logo h1:hover{
+    color: #e7ce62;
+  }
+
+  nav.sidebar {
+    margin-bottom: 0rem;
+  }
+
+  .sidebar a {
+    font-size: 1rem;
+  }
+  .sidebar a:hover{
+    box-shadow: 0px 0px 10px var(--foreground);
+
+  }
+
+  
+}
+
+/* code for the resume  */
+.resume-container {
+  position: relative;
+  width: 95%;
+  padding-top: 150%; /* Adjust the aspect ratio for mobile view */
+  margin: 0 auto;
+}
+.resume-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+  .resume-container {
+    padding-top: 56.25%; /* Revert to 16:9 aspect ratio for larger screens */
+  }
+}
+
+/* designing for the footer */
+footer {
+  text-align: center;
+  font-size: 0.6rem;
+}
