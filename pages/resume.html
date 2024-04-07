@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Resume - Your Name</title>
     <link rel="stylesheet" href="../style.css" />
+    <script src="../script.js" defer></script>
   </head>
   <body>
     <header>
@@ -20,23 +21,29 @@
         <div><a href="./cover_letter.html">Cover Letter</a></div>
         <div><a href="./certificates.html">Certificates</a></div>
         <div><a href="./Immunization.html">Immunization</a></div>
+        <div><a href="./vulnerableSectorCheck.html">VSC</a></div>
       </nav>
     </header>
-    <hr>
+    <hr />
     <main>
       <!-- Placeholder content for the Resume page -->
       <div class="content">
         <h1>My Resume</h1>
       </div>
-      <div class="resume-container">
-        <iframe
-          src="../media/Resume for work (1).pdf"
-          width="100%"
-          height="100%"
-        ></iframe>
+      <div class="document-container-container">
+        <figure class="figure">
+          <div class="resume-1 document-container">
+            <img src="../media/resume/resume1.jpg" alt="" />
+          </div>
+          <hr />
+          <div class="resume-2 document-container">
+            <img src="../media/resume/resume2.jpg" alt="" />
+          </div>
+        </figure>
       </div>
     </main>
-    <hr>
+    <button id="scrollToTopBtn" class="scroll-to-top-btn btn">UP</button>
+    <hr />
     <footer>
       <p>&copy; 2024 Your Name</p>
     </footer>
