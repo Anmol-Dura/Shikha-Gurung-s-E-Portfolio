@@ -245,7 +245,7 @@ hr {
 .resume-container {
   position: relative;
   width: 100%;
-  padding-top: 150%; /* Aspect ratio 16:9 */
+  padding-top: 270%; /* Aspect ratio 16:9 */
   margin-bottom: 1rem;
 }
 
@@ -352,8 +352,8 @@ footer {
   }
   .resume-container {
     margin-bottom: 1rem;
+    padding-top: 500%; /* Aspect ratio 16:9 */
   }
-
 }
 
 /* Desktop */
